@@ -44,17 +44,17 @@ Returns `Builder`.
 Returns builder for context object. All methods will be defined on this object.
 Returns `Builder`.
 
-### Builder.named(name)
+#### .named(name)
 
 Defines name for the method.
 Returns `Builder`.
 
-### Builder.changes(propertyPath)
+#### .changes(propertyPath)
 
 Points created method to propertyPath, which can be `String` or `Function`. In case of `Function` property path will be resolved each time method is called. 
 Returns `Builder`.
 
-### .value() / .property() / .array() / .object()
+#### .value() / .property() / .array() / .object()
 
 This methods tells builder about value type, with which created method will be working.
 
