@@ -54,7 +54,7 @@ Returns `Builder`.
 Points created method to propertyPath, which can be `String` or `Function`. In case of `Function` property path will be resolved each time method is called. 
 Returns `Builder`.
 
-### Builder.value() / Builder.property() / Builder.array() / Builder.object()
+### .value() / .property() / .array() / .object()
 
 This methods tells builder about value type, with which created method will be working.
 
