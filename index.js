@@ -30,7 +30,7 @@ Builder.prototype.changes = function changes (pathResolver) {
     if (typeof pathResolver === 'string') {
         this.parseStringPath(pathResolver);
     } else {
-        this._pathResolver = pathResolver;
+        this._pathResolver = pathResolver.bind(this._ctx);
     }
     return this;
 };
@@ -40,7 +40,7 @@ Builder.prototype._generic = function _generic (builder, method) {
         if (builder._before) { builder._before(); }
 
         if (typeof builder._pathResolver === 'function') {
-            builder.parseStringPath(builder._pathResolver.call(this._ctx));
+            builder.parseStringPath(builder._pathResolver());
         }
 
         var ctx = builder._getCtx(builder._ctx, builder._propertyPath);
@@ -61,11 +61,6 @@ Builder.prototype._getCtx = function _getCtx (object, path) {
         object = object[path[i]];
     }
     return object;
-};
-
-Builder.prototype.assign = function assign (builder) {
-
-    return builder._value();
 };
 
 ['value', 'property', 'object', 'array'].map(function (method) {

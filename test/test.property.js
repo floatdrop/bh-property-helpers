@@ -6,6 +6,12 @@ var Methods = require('..');
 var method = new Methods();
 
 describe('.property()', function () {
+    it.only('should return property', function () {
+        var obj = { _mods: { test: 'value' }};
+        method(obj).named('mods').changes('_mods').property();
+        obj.mods('test').should.eql('value');
+    });
+
     it('should set property', function () {
         var obj = {};
         method(obj).named('setter').changes('mods').property();
