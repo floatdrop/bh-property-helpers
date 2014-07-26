@@ -6,12 +6,16 @@ function Builder (ctx) {
 }
 
 Builder.prototype.before = function before (func) {
-    this._before = func.bind(this._ctx);
+    if (func) {
+        this._before = func.bind(this._ctx);
+    }
     return this;
 };
 
 Builder.prototype.after = function after (func) {
-    this._after = func.bind(this._ctx);
+    if (func) {
+        this._after = func.bind(this._ctx);
+    }
     return this;
 };
 
@@ -71,7 +75,7 @@ Builder.prototype._getCtx = function _getCtx (object, path) {
             enumerable: false,
             writable: false
         });
-        return new Builder(this._ctx);
+        return new Builder(this._ctx).before(this._before).after(this._after);
     };
 });
 

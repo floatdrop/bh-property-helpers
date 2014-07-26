@@ -6,6 +6,16 @@ var Methods = require('..');
 var method = new Methods();
 
 describe('chaining', function () {
+    it('should preserve before', function (done) {
+        var obj = {};
+        method(obj)
+            .before(done)
+            .named('setter').changes('a').value()
+            .named('getter').changes('b').value();
+
+        obj.getter();
+    });
+
     it('should work', function () {
         var obj = {};
         method(obj)
