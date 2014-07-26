@@ -40,7 +40,7 @@ Builder.prototype._generic = function _generic (builder, method) {
         if (builder._before) { builder._before(); }
 
         if (typeof builder._pathResolver === 'function') {
-            builder.parseStringPath(builder._pathResolver());
+            builder.parseStringPath(builder._pathResolver.call(this._ctx));
         }
 
         var ctx = builder._getCtx(builder._ctx, builder._propertyPath);
