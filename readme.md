@@ -2,6 +2,8 @@
 
 This is helper for fast and nice property setter/getter creation in context object.
 
+__Important:__ It is slow.
+
 ## Usage
 
 ```js
